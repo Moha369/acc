@@ -78,7 +78,7 @@ def reg_check(request, pk):
         subject = 'Registration Approved'
         html_message = render_to_string('regs/reg-app.html', {'user': registration.user.username, 'invite_link' : invite_link, 'shorten_link' : shorten_link})
         plain_message = strip_tags(html_message)
-        from_email = 'ACC <lichess.stats@gmail.com>'
+        from_email = 'ACC <arabcodingcommunity@gmail.com>'
         to = registration.email
         user_email = registration.user.email
         if to == user_email:
@@ -93,7 +93,7 @@ def reg_check(request, pk):
         subject = 'Registration Rejected'
         html_message = render_to_string('regs/reg-dec.html', {'user': registration.user.username})
         plain_message = strip_tags(html_message)
-        from_email = 'ACC <lichess.stats@gmail.com>'
+        from_email = 'ACC <arabcodingcommunity@gmail.com>'
         to = registration.email
         user_email = registration.user.email
         if to == user_email:
