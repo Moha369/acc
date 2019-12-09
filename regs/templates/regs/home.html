@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Arab Coding Community{% endblock %}
+{% block header_title %}Welcome to Arab Coding Community{% endblock %}
+{% block header_desc %}Welcome to the first arab community-made slack community for coding{% endblock %}
+{% block header_extra %}In this community we work together on projects, help each others in problems, share ideas or even talk in offtopic things.{% endblock %}
+{% block header_acc %}<a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">About Us</a>{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="jumbotron col-md-6">
+    <h1 class="display-4">Register!! Join Us</h1>
+    <p class="lead">Join our community ! Ask, Answer all sort of programming questions about all programming languages.</p>
+    <hr class="my-4">
+    <p></p>
+    <a class="btn btn-success btn-lg" href="{% url 'register' %}" role="button">Register</a>
+  </div>
+  <div class="jumbotron col-md-6">
+    <h1 class="display-4 text-right">إنضم إلينا !!</h1>
+    <p class="lead text-right">إنضم لمجتمعنا وإسأل, جاوب اسئلة تخص البرمجة لجميع اللغات</p>
+    <hr class="my-4">
+    <p></p>
+    <a class="btn btn-success btn-lg float-right" href="{% url 'register' %}" role="button">إنضم</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact - {{ contact.pk }}{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Registration Number {{ contact.pk }}</h1>
+  <hr class="my-4">
+  <p class="lead"><strong>By</strong> : {{ contact.user.username }}</p>
+  <p class="lead"><strong>Email Provided</strong> : {{ contact.email }}</p>
+  <p class="lead"><strong>User Email</strong> : {{ contact.user.email }}</p>
+  <hr class="my-4">
+  <p>{{ reg.message }}</p>
+  <form method="POST">
+    {% csrf_token %}
+    {% if contact.status == "pending" %}
+    <button name="approve" class="btn btn-success" type="submit" role="button">Replied</button>
+    <button name="rejected" class="btn btn-danger" type="submit" role="button">Ignored</button>
+    {% else %}
+    <p class="lead">This user has already been <strong>{{ contact.status }}</strong></p>
+    {% endif %}
+  </form>
+</div>
+{% endblock %}

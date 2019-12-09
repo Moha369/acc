@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Registration Number {{ reg.pk }}</h1>
+  <hr class="my-4">
+  <p class="lead"><strong>By</strong> : {{ reg.user.username }}</p>
+  <p class="lead"><strong>Email Provided</strong> : {{ reg.email }}</p>
+  <p class="lead"><strong>User Email</strong> : {{ reg.user.email }}</p>
+  <hr class="my-4">
+  <p>{{ reg.message }}</p>
+  <form method="POST">
+    {% csrf_token %}
+    {% if reg.status == "pending" %}
+    <button name="approve" class="btn btn-success" type="submit" role="button">Approve</button>
+    <button name="rejected" class="btn btn-danger" type="submit" role="button">Reject</button>
+    {% else %}
+    <p class="lead">This user has already been <strong>{{ reg.get_status_display }}</strong></p>
+    {% endif %}
+  </form>
+</div>
+{% endblock %}

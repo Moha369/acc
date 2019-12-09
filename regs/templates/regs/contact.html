@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Contact Us - Arab Coding Community{% endblock %}
+{% block header_title %}Facing a Problem ?{% endblock %}
+{% block header_desc %}Contact us if you didn't receive invitation yet or any problem you faced.{% endblock %}
+{% block content %}
+<form class="form-group" method="POST">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Login - Arab Coding Community{% endblock %}
+{% block header_title %}Login{% endblock %}
+{% block header_desc %}Login is required in order to register to our community.{% endblock %}
+{% block header_extra %}Don't have an account ? <a href="{% url 'account_register' %}">Register</a> Here{% endblock %}
+
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit" class="btn btn-success">Submit</button>
+  <p class="text-muted">Forgot Password ? <a href="{% url 'password_reset' %}">Reset Password</a></p>
+</form>
+{% endblock %}

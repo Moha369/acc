@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}New Account - Arab Coding Community{% endblock %}
+{% block header_title %}Register New Account{% endblock %}
+{% block header_desc %}Register a new account so you can be able to join us{% endblock %}
+{% block header_extra %}Have an account ? <a href="{% url 'login' %}">Login</a> Here{% endblock %}
+
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+{% endblock %}
