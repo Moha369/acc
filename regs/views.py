@@ -86,7 +86,7 @@ def reg_check(request, pk):
             mail.send_mail(subject, plain_message, from_email, [to], html_message=html_message, fail_silently = False)
         else:
             mail.send_mail(subject, plain_message, from_email, [to, user_email], html_message=html_message, fail_silently = False)
-        registration.status = 2
+        registration.status = 'approved'
         registration.save()
         return redirect('dashboard')
     if request.method == 'POST' and 'rejected' in request.POST:
@@ -101,7 +101,7 @@ def reg_check(request, pk):
             mail.send_mail(subject, plain_message, from_email, [to], html_message=html_message, fail_silently = False)
         else:
             mail.send_mail(subject, plain_message, from_email, [to, user_email], html_message=html_message, fail_silently = False)
-        registration.status = 3
+        registration.status = 'rejected'
         registration.save()
         return redirect('dashboard')
     context = {}
