@@ -7,7 +7,7 @@
   <h1 class="display-4">Pending Registrations</h1>
   {% for reg in regs %}
   <hr class="my-4">
-  <p class="lead">{{ reg.email }} <a class="btn btn-primary btn-lg" href="{% url 'check_reg' reg.pk %}" role="button">Learn more</a></p>
+  <p class="lead">{{ reg.email }} ({{ reg.user.username }}) <a class="btn btn-primary btn-lg" href="{% url 'check_reg' reg.pk %}" role="button">Learn more</a></p>
   <hr class="my-4">
   {% empty %}
   <hr class="my-4">
