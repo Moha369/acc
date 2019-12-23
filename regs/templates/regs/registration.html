@@ -5,6 +5,11 @@
 {% block header_title %}Register To Join Our Community{% endblock %}
 {% block header_desc %}Please provide us your email and a message telling us why do you want to join, and a moderator will preview your registration.{% endblock %}
 {% block content %}
+{% if reg %}
+<div class="alert alert-primary" role="alert">
+  Note : Only one registration is allowed for each user, means that you are editing your existing registration, not creating a new one.
+</div>
+{% endif %}
 <form class="form-group" method="POST">
   {% csrf_token %}
   {{ form|crispy }}
