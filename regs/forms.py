@@ -17,7 +17,7 @@ class UserRegisterForm(UserCreationForm):
     def clean(self):
         email = self.cleaned_data.get('email')
         if User.objects.filter(email=email).exists():
-            raise ValidationError("A user with provided email already exists")
+            raise forms.ValidationError("A user with provided email already exists")
         return self.cleaned_data
 
 class ContactForm(forms.ModelForm):
