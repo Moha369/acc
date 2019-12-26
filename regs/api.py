@@ -2,7 +2,7 @@ from django.forms.models import model_to_dict
 from django.http import HttpResponse, JsonResponse, HttpResponseNotAllowed
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
-
+from django.contrib.auth.models import User
 from .models import *
 
 def token_required(view):
@@ -101,3 +101,9 @@ def NewsCreateAPI(request):
     obj = News(title = _title, text = _text)
     obj.save()
     return JsonResponse({'status' : 1, 'obj' : model_to_dict(obj)}, json_dumps_params = {'indent' : 2})
+
+@require_GET
+@token_required
+def AdminsAPI(request):
+    obj = User.objects.filter(is_staff = True, is_active = True)
+    return JsonResponse({'status' : 1, 'admins' : [p.username for p in obj]}, json_dumps_params = {'indent' : 2})

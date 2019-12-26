@@ -8,9 +8,8 @@ apipatterns = [
     path('news/', NewsAPI),
     path('news/update/', NewsEditAPI),
     path('news/id/', NewsByIdAPI),
-    path('news/create/', NewsCreateAPI)
-
-
+    path('news/create/', NewsCreateAPI),
+    path('admins/', AdminsAPI)
 ]
 
 urlpatterns = [
