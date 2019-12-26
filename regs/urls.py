@@ -1,11 +1,21 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import *
+from .api import *
+apipatterns = [
+    path('news/', NewsAPI),
+    path('news/update/', NewsEditAPI),
+    path('news/id/', NewsByIdAPI),
+    path('news/create/', NewsCreateAPI)
+
+
+]
 
 urlpatterns = [
     path('', homepage, name = 'home'),
+    path('api/', include(apipatterns)),
     path('about/', about, name = 'about'),
     path('register/', reg, name = 'register'),
     path('contact/', contact, name = 'contact'),
