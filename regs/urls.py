@@ -6,8 +6,9 @@ from .views import *
 from .api import *
 apipatterns = [
     path('news/', NewsAPI),
-    path('news/update/', NewsEditAPI),
     path('news/id/', NewsByIdAPI),
+    path('news/update/', NewsEditAPI),
+    path('news/delete/', NewsDeleteAPI),
     path('news/create/', NewsCreateAPI),
     path('admins/', AdminsAPI)
 ]

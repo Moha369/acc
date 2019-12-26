@@ -102,6 +102,25 @@ def NewsCreateAPI(request):
     obj.save()
     return JsonResponse({'status' : 1, 'obj' : model_to_dict(obj)}, json_dumps_params = {'indent' : 2})
 
+@csrf_exempt
+@require_POST
+@token_required
+def NewsDeleteAPI(request):
+    _id = request.POST.get('id', None)
+    if not _id:
+        return HttpResponse('Bad Request', status = 400)
+    try:
+        _number = int(_id)
+    except ValueError:
+        return HttpResponse('Bad Request', status = 400)
+    try:
+        obj = News.objects.get(pk = _id)
+        obj_dict = model_to_dict(obj)
+        obj.delete()
+        return JsonResponse({'status' : 1, 'obj' : obj_dict}, json_dumps_params = {'indent' : 2})
+    except News.DoesNotExist:
+        return JsonResponse({'status' : 0, 'error' : 'No object with this id : {}'.format(_id)}, json_dumps_params = {'indent' : 2})
+
 @require_GET
 @token_required
 def AdminsAPI(request):
