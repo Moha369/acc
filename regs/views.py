@@ -88,6 +88,7 @@ def reg_check(request, pk):
             mail.send_mail(subject, plain_message, from_email, [to, user_email], html_message=html_message, fail_silently = False)
         registration.status = 'approved'
         registration.save()
+        messages.success(request, f'Confirmation email sent to {registration.user.username}')
         return redirect('dashboard')
     if request.method == 'POST' and 'rejected' in request.POST:
         subject = 'Registration Rejected'
@@ -103,6 +104,7 @@ def reg_check(request, pk):
             mail.send_mail(subject, plain_message, from_email, [to, user_email], html_message=html_message, fail_silently = False)
         registration.status = 'rejected'
         registration.save()
+        messages.error(request, f'Rejection email sent to {registration.user.username}')
         return redirect('dashboard')
     context = {}
     context['reg'] = registration
