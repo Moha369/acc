@@ -9,10 +9,9 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+from django.contrib.messages import constants as messages
 import os
 import django_heroku
-
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -113,6 +112,10 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}
 
 TIME_ZONE = 'UTC'
 
